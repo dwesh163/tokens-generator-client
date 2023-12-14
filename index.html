@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .form-container {
+      width: 50%;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+  </style>
+  <title>Token Form</title>
 </head>
 <body>
-    
+
+<div class="container form-container">
+  <h2>Token Form</h2>
+  <form id="tokenForm" method="post" class="flex-container">
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="server-url">Server URL:</label>
+      <input type="url" class="form-control" id="server-url" name="server-url" placeholder="https://server.com/" required>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="setFormAction()">Get Token</button>
+
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function setFormAction() {
+    var form = document.getElementById('tokenForm');
+    var urlInput = document.getElementById('server-url');
+
+    form.action = urlInput.value;
+    form.submit();
+  }
+</script>
+
 </body>
 </html>
